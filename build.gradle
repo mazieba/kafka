@@ -1,0 +1,25 @@
+plugins {
+    id 'org.springframework.boot' version '1.5.8.RELEASE'
+}
+
+group 'pl.capgemini.kafka'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven { url "http://repo.spring.io/libs-snapshot" }
+}
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.thymeleaf:thymeleaf-spring4")
+    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
+    compile("org.springframework.kafka:spring-kafka:2.0.0.RELEASE")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
