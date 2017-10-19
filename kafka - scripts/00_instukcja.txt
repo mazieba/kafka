@@ -1,0 +1,6 @@
+﻿1. Apache Kafka: https://kafka.apache.org/downloads
+2. Skrypty zakładają, że została utworzona zmienna systemowa KAFKA_PATH wskazująca główny katalog z kafką
+   Jeśli nie została utworzona taka zmienna należy odkomentować pierwszą linię pliku i wyedytować ścieżkę do katalogu kafki
+3. Skrypty należy uruchamiać w kolejności wskazanej przez nazwy plików
+4. Skrypt 03 tworzący nowy topic uruchamia się jednokrotnie.
+5. Katalog "opcjonalne" zawiera skrypty uruchamiajce domyślnego consumera/producera - przydatne do testów
