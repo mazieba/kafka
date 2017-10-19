@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import pl.capgemini.consumer.KafkaListenerImpl;
+import pl.capgemini.consumer.KafkaMessageConsumer;
 
 @SpringBootApplication
 public class Application {
@@ -14,7 +14,7 @@ public class Application {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(Application.class, args);
-        KafkaListenerImpl kafkaListener = ctx.getBean(KafkaListenerImpl.class);
-        kafkaListener.start();
+        KafkaMessageConsumer kafkaConsumer = ctx.getBean(KafkaMessageConsumer.class);
+        kafkaConsumer.start();
     }
 }

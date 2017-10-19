@@ -11,20 +11,20 @@ import org.springframework.kafka.listener.MessageListener;
 import org.springframework.kafka.listener.config.ContainerProperties;
 import org.springframework.stereotype.Component;
 import pl.capgemini.properties.ApplicationProperties;
+import pl.capgemini.services.MessageService;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 
 @Component
-public class KafkaListenerImpl {
+public class KafkaMessageConsumer {
 
     @Autowired
     private ApplicationProperties applicationProperties;
 
     @Autowired
-    public KafkaListenerImpl() {
-    }
+    private MessageService messageService;
 
     public void start() {
         String topic = applicationProperties.getKafkaTopicsForConsumer();
@@ -35,9 +35,7 @@ public class KafkaListenerImpl {
             @Override
             public void onMessage(ConsumerRecord<Integer, String> message) {
                 String value = message.value();
-                //TODO: delete console writes after implementing other features
-                System.out.println(message);
-                System.out.println(value);
+                messageService.saveEvent(value);
                 latch.countDown();
             }
 
